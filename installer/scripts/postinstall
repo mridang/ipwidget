@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# postinstall — runs as root after the .pkg drops IPWidget.app into /Applications.
+#
+# The app is a headless, UI-less background agent, so there's nothing for the
+# user to "open". We register it with LaunchServices (so the widget appears in
+# the gallery) and launch it in the logged-in user's GUI session, which starts
+# the network-monitor service and registers the login item via SMAppService.
+#
+set -e
+
+APP="/Applications/IPWidget.app"
+
+# Make LaunchServices/pluginkit aware of the freshly installed app + widget.
+LSREGISTER="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
+[ -x "$LSREGISTER" ] && "$LSREGISTER" -f "$APP" || true
+
+# postinstall runs as root; launch the agent in the console user's session so it
+# lands in their GUI/login context rather than root's.
+uid="$(stat -f%u /dev/console 2>/dev/null || echo 0)"
+if [ -n "$uid" ] && [ "$uid" != "0" ]; then
+    launchctl asuser "$uid" /usr/bin/open "$APP" || true
+fi
+
+exit 0

@@ -18,5 +18,6 @@ xcuserdata/
 # Test results
 *.xcresult
 
-# Release artifact (built by semantic-release)
+# Release artifacts (built by semantic-release)
 /IPWidget.zip
+/IPWidget.pkg

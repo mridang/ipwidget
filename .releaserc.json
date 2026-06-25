@@ -8,7 +8,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "xcodebuild -project IPWidget.xcodeproj -scheme IPWidget -configuration Release -derivedDataPath .build CODE_SIGNING_ALLOWED=NO build && ditto -c -k --keepParent '.build/Build/Products/Release/IPWidget.app' IPWidget.zip"
+        "prepareCmd": "bash installer/build.sh ${nextRelease.version}"
       }
     ],
     [
@@ -18,8 +18,12 @@
         "failComment": false,
         "assets": [
           {
+            "path": "IPWidget.pkg",
+            "label": "IPWidget.pkg (macOS installer)"
+          },
+          {
             "path": "IPWidget.zip",
-            "label": "IPWidget.app (macOS, unsigned)"
+            "label": "IPWidget.app (macOS, drag-install)"
           }
         ]
       }
