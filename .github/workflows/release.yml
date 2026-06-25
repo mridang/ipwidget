@@ -1,0 +1,41 @@
+name: Release to GitHub
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    working-directory: ./
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Semantic Release
+    # macOS runner: this is an Xcode app, so the release artifact (the .app) must
+    # be built with xcodebuild — unlike the SPM/Node repos that release on ubuntu.
+    # (action-runner-common is omitted here: its harden-runner/Docker-cache steps
+    # target Linux runners.)
+    runs-on: macos-15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: '.releaserc.json'
+
+      - name: Run semantic-release
+        uses: mridang/action-semantic-release@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

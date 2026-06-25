@@ -1,0 +1,28 @@
+{
+  "branches": [
+    "main"
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "xcodebuild -project IPWidget.xcodeproj -scheme IPWidget -configuration Release -derivedDataPath .build CODE_SIGNING_ALLOWED=NO build && ditto -c -k --keepParent '.build/Build/Products/Release/IPWidget.app' IPWidget.zip"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failComment": false,
+        "assets": [
+          {
+            "path": "IPWidget.zip",
+            "label": "IPWidget.app (macOS, unsigned)"
+          }
+        ]
+      }
+    ]
+  ]
+}
