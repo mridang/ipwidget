@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build & Test (macOS)
+    runs-on: macos-15
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Toolchain versions
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Build and run tests
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project IPWidget.xcodeproj \
+            -scheme IPWidget \
+            -configuration Debug \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO \
+            | tail -200

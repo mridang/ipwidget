@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Xcode build output
+build/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# Per-user Xcode state (shared schemes ARE committed)
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Test results
+*.xcresult

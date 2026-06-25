@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Run inside the App Sandbox, as macOS requires for apps that ship
+	     widget extensions. -->
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<!-- Allow outbound network connections so the host (and, more
+	     importantly, the embedded extension's process) can reach the IP
+	     lookup service. -->
+	<key>com.apple.security.network.client</key>
+	<true/>
+</dict>
+</plist>
