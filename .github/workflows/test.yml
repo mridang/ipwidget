@@ -1,9 +1,16 @@
-name: CI
+name: Run Tests (xcodebuild)
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: ./
 
 # Cancel superseded runs on the same ref.
 concurrency:
@@ -11,12 +18,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-test:
-    name: Build & Test (macOS)
+  app-testing:
+    # macOS runner: this is an Xcode/WidgetKit app, so it can't build on the
+    # ubuntu-latest runners the SPM/Node repos use. (action-runner-common is
+    # omitted here for the same reason noted in release.yml.)
     runs-on: macos-15
-
     steps:
-      - name: Check out
+      - name: Checkout code
         uses: actions/checkout@v5
 
       - name: Toolchain versions
@@ -24,13 +32,27 @@ jobs:
           xcodebuild -version
           swift --version
 
-      - name: Build and run tests
+      - name: Build app
+        run: xcodebuild build -project IPWidget.xcodeproj -scheme IPWidget -configuration Debug -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO
+
+      - name: Run package tests
         run: |
-          set -o pipefail
-          xcodebuild test \
-            -project IPWidget.xcodeproj \
-            -scheme IPWidget \
-            -configuration Debug \
-            -destination 'platform=macOS' \
-            CODE_SIGNING_ALLOWED=NO \
-            | tail -200
+          mkdir -p .out
+          swift test --package-path Packages/IPWidgetKit --enable-code-coverage --xunit-output "$PWD/.out/junit.xml"
+
+      - name: Export coverage
+        if: always()
+        run: |
+          BINPATH=$(swift build --package-path Packages/IPWidgetKit --show-bin-path)
+          BINARY="$BINPATH/IPWidgetKitPackageTests.xctest/Contents/MacOS/IPWidgetKitPackageTests"
+          PROFDATA="$BINPATH/codecov/default.profdata"
+          if [ -f "$PROFDATA" ]; then
+            xcrun llvm-cov export -format=lcov "$BINARY" -instr-profile "$PROFDATA" > .out/lcov.info
+          fi
+
+      - name: Generate coverage report
+        if: always()
+        uses: mridang/action-test-reporter@v3
+        with:
+          results-path: '.out/junit-swift-testing.xml'
+          coverage-path: '.out/lcov.info'

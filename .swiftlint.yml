@@ -1,0 +1,20 @@
+disabled_rules:
+  # Short idiomatic names (ip, country_code, ...) are valid Swift
+  - identifier_name
+  # IPWidget.swift is long by design (view + preview data)
+  - file_length
+  # swift-format handles brace / comma / trailing-whitespace / line-length formatting
+  - opening_brace
+  - trailing_comma
+  - trailing_whitespace
+  - line_length
+
+opt_in_rules:
+  - explicit_init
+  - prefer_self_type_over_type_of_self
+
+included:
+  - IPWidgetApp
+  - IPWidgetExtension
+  - Packages/IPWidgetKit/Sources
+  - Packages/IPWidgetKit/Tests

@@ -18,6 +18,16 @@ xcuserdata/
 # Test results
 *.xcresult
 
+# Test output (JUnit/coverage reports)
+.out/
+
 # Release artifacts (built by semantic-release)
 /IPWidget.zip
 /IPWidget.pkg
+
+# Editor / IDE
+.idea
+.vscode
+
+# devbox
+.devbox/

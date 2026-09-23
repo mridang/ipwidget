@@ -1,0 +1,34 @@
+name: Format Code (swift-format)
+
+on: push
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    working-directory: ./
+
+jobs:
+  code-formatting:
+    # macOS runner: Xcode ships swift-format (the `swift format` subcommand)
+    # already, so no separate setup step is needed, unlike the Linux runners
+    # the SPM repos use. (action-runner-common is omitted here for the same
+    # reason noted in release.yml.)
+    runs-on: macos-15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Apply swift-format
+        run: swift format --recursive --in-place IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: Apply swift-format
+          commit_options: '--no-verify'
+          repository: .
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          commit_author: GitHub Actions <actions@github.com>

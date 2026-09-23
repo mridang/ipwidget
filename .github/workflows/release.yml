@@ -1,9 +1,9 @@
-name: Release to GitHub
+name: Release to Github
 
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
@@ -17,8 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  release:
-    name: Semantic Release
+  publish-package:
     # macOS runner: this is an Xcode app, so the release artifact (the .app) must
     # be built with xcodebuild — unlike the SPM/Node repos that release on ubuntu.
     # (action-runner-common is omitted here: its harden-runner/Docker-cache steps
