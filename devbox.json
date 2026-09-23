@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
+  "packages": [
+    "nodejs@24.12.0",
+    "swiftlint@0.65.0"
+  ],
+  "shell": {
+    "scripts": {
+      "lint":         "swiftlint lint --strict IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests",
+      "lint:fix":     "swiftlint --fix IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests",
+      "format":       "swift format --recursive --in-place IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests",
+      "format:check": "swift format lint --recursive IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests",
+      "test":         "swift test --package-path Packages/IPWidgetKit"
+    }
+  }
+}
