@@ -30,13 +30,17 @@
       "@semantic-release/github",
       {
         "successComment": false,
-        "failComment": false
-      }
-    ],
-    [
-      "@semantic-release/exec",
-      {
-        "publishCmd": "gh release upload v${nextRelease.version} IPWidget.pkg IPWidget.zip --clobber --repo mridang/ipwidget"
+        "failComment": false,
+        "assets": [
+          {
+            "path": "IPWidget.pkg",
+            "label": "IPWidget.pkg (macOS installer)"
+          },
+          {
+            "path": "IPWidget.zip",
+            "label": "IPWidget.app (macOS, drag-install)"
+          }
+        ]
       }
     ]
   ]
