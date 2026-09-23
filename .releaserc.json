@@ -12,6 +12,15 @@
       }
     ],
     [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "IPWidget.xcodeproj/project.pbxproj"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    [
       "@semantic-release/exec",
       {
         "prepareCmd": "make package VERSION=${nextRelease.version}"
@@ -21,17 +30,13 @@
       "@semantic-release/github",
       {
         "successComment": false,
-        "failComment": false,
-        "assets": [
-          {
-            "path": "IPWidget.pkg",
-            "label": "IPWidget.pkg (macOS installer)"
-          },
-          {
-            "path": "IPWidget.zip",
-            "label": "IPWidget.app (macOS, drag-install)"
-          }
-        ]
+        "failComment": false
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "gh release upload v${nextRelease.version} IPWidget.pkg IPWidget.zip --clobber --repo mridang/ipwidget"
       }
     ]
   ]
