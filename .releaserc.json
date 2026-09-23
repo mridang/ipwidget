@@ -12,6 +12,15 @@
       }
     ],
     [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "IPWidget.xcodeproj/project.pbxproj"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    [
       "@semantic-release/exec",
       {
         "prepareCmd": "make package VERSION=${nextRelease.version}"
@@ -32,15 +41,6 @@
             "label": "IPWidget.app (macOS, drag-install)"
           }
         ]
-      }
-    ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": [
-          "IPWidget.xcodeproj/project.pbxproj"
-        ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
   ]
