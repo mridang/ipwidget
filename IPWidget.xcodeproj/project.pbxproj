@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A100000000000000000000E1 /* IPWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000D1 /* IPWidgetApp.swift */; };
-		A100000000000000000000E8 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000D8 /* NetworkMonitor.swift */; };
 		A100000000000000000000E4 /* IPWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000D4 /* IPWidgetBundle.swift */; };
 		A100000000000000000000E5 /* IPWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000D5 /* IPWidget.swift */; };
-		A100000000000000000000EB /* IPLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000DC /* IPLogic.swift */; };
-		A100000000000000000000EC /* IPLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000DC /* IPLogic.swift */; };
-		A100000000000000000000ED /* IPWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000000DD /* IPWidgetTests.swift */; };
 		A100000000000000000000E9 /* IPWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A100000000000000000000C2 /* IPWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A100000000000000000000F9 /* NetworkMonitoring in Frameworks */ = {isa = PBXBuildFile; productRef = A1000000000000000000E012 /* NetworkMonitoring */; };
+		A100000000000000000000FA /* IPResolver in Frameworks */ = {isa = PBXBuildFile; productRef = A1000000000000000000E011 /* IPResolver */; };
+		A100000000000000000000FB /* MapSnapshotting in Frameworks */ = {isa = PBXBuildFile; productRef = A1000000000000000000E013 /* MapSnapshotting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,16 +44,12 @@
 		A100000000000000000000C1 /* IPWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A100000000000000000000C2 /* IPWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IPWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A100000000000000000000D1 /* IPWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPWidgetApp.swift; sourceTree = "<group>"; };
-		A100000000000000000000D8 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		A100000000000000000000D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A100000000000000000000D3 /* IPWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IPWidget.entitlements; sourceTree = "<group>"; };
 		A100000000000000000000D4 /* IPWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPWidgetBundle.swift; sourceTree = "<group>"; };
 		A100000000000000000000D5 /* IPWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPWidget.swift; sourceTree = "<group>"; };
 		A100000000000000000000D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A100000000000000000000D7 /* IPWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IPWidgetExtension.entitlements; sourceTree = "<group>"; };
-		A100000000000000000000DC /* IPLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPLogic.swift; sourceTree = "<group>"; };
-		A100000000000000000000DD /* IPWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPWidgetTests.swift; sourceTree = "<group>"; };
-		A100000000000000000000C3 /* IPWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A100000000000000000000F9 /* NetworkMonitoring in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A100000000000000000000FA /* IPResolver in Frameworks */,
+				A100000000000000000000FB /* MapSnapshotting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +78,6 @@
 			children = (
 				A100000000000000000000A4 /* IPWidgetApp */,
 				A100000000000000000000A5 /* IPWidgetExtension */,
-				A100000000000000000000A6 /* IPWidgetTests */,
 				A100000000000000000000A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,24 +87,14 @@
 			children = (
 				A100000000000000000000C1 /* IPWidget.app */,
 				A100000000000000000000C2 /* IPWidgetExtension.appex */,
-				A100000000000000000000C3 /* IPWidgetTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A100000000000000000000A6 /* IPWidgetTests */ = {
-			isa = PBXGroup;
-			children = (
-				A100000000000000000000DD /* IPWidgetTests.swift */,
-			);
-			path = IPWidgetTests;
 			sourceTree = "<group>";
 		};
 		A100000000000000000000A4 /* IPWidgetApp */ = {
 			isa = PBXGroup;
 			children = (
 				A100000000000000000000D1 /* IPWidgetApp.swift */,
-				A100000000000000000000D8 /* NetworkMonitor.swift */,
 				A100000000000000000000D9 /* Info.plist */,
 				A100000000000000000000D3 /* IPWidget.entitlements */,
 			);
@@ -119,7 +106,6 @@
 			children = (
 				A100000000000000000000D4 /* IPWidgetBundle.swift */,
 				A100000000000000000000D5 /* IPWidget.swift */,
-				A100000000000000000000DC /* IPLogic.swift */,
 				A100000000000000000000D6 /* Info.plist */,
 				A100000000000000000000D7 /* IPWidgetExtension.entitlements */,
 			);
@@ -144,6 +130,9 @@
 				A1000000000000000000DA01 /* PBXTargetDependency */,
 			);
 			name = IPWidget;
+			packageProductDependencies = (
+				A1000000000000000000E012 /* NetworkMonitoring */,
+			);
 			productName = IPWidget;
 			productReference = A100000000000000000000C1 /* IPWidget.app */;
 			productType = "com.apple.product-type.application";
@@ -161,24 +150,13 @@
 			dependencies = (
 			);
 			name = IPWidgetExtension;
+			packageProductDependencies = (
+				A1000000000000000000E011 /* IPResolver */,
+				A1000000000000000000E013 /* MapSnapshotting */,
+			);
 			productName = IPWidgetExtension;
 			productReference = A100000000000000000000C2 /* IPWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
-		};
-		A100000000000000000000B3 /* IPWidgetTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A1000000000000000000CF09 /* Build configuration list for PBXNativeTarget "IPWidgetTests" */;
-			buildPhases = (
-				A100000000000000000000F8 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = IPWidgetTests;
-			productName = IPWidgetTests;
-			productReference = A100000000000000000000C3 /* IPWidgetTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -207,13 +185,15 @@
 				Base,
 			);
 			mainGroup = A100000000000000000000A2;
+			packageReferences = (
+				A1000000000000000000E001 /* XCLocalSwiftPackageReference "Packages/IPWidgetKit" */,
+			);
 			productRefGroup = A100000000000000000000A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A100000000000000000000B1 /* IPWidget */,
 				A100000000000000000000B2 /* IPWidgetExtension */,
-				A100000000000000000000B3 /* IPWidgetTests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,7 +220,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A100000000000000000000E8 /* NetworkMonitor.swift in Sources */,
 				A100000000000000000000E1 /* IPWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,16 +230,6 @@
 			files = (
 				A100000000000000000000E5 /* IPWidget.swift in Sources */,
 				A100000000000000000000E4 /* IPWidgetBundle.swift in Sources */,
-				A100000000000000000000EB /* IPLogic.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A100000000000000000000F8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A100000000000000000000ED /* IPWidgetTests.swift in Sources */,
-				A100000000000000000000EC /* IPLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,34 +393,6 @@
 			};
 			name = Release;
 		};
-		A1000000000000000000CF0A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ng.mrida.IPWidget.IPWidgetTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		A1000000000000000000CF0B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ng.mrida.IPWidget.IPWidgetTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -482,16 +423,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1000000000000000000CF09 /* Build configuration list for PBXNativeTarget "IPWidgetTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1000000000000000000CF0A /* Debug */,
-				A1000000000000000000CF0B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A1000000000000000000E001 /* XCLocalSwiftPackageReference "Packages/IPWidgetKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/IPWidgetKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1000000000000000000E011 /* IPResolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = IPResolver;
+		};
+		A1000000000000000000E012 /* NetworkMonitoring */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkMonitoring;
+		};
+		A1000000000000000000E013 /* MapSnapshotting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MapSnapshotting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A100000000000000000000A1 /* Project object */;
 }

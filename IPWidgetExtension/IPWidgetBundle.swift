@@ -9,8 +9,8 @@
 //  widgets.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 @main
 struct IPWidgetBundle: WidgetBundle {

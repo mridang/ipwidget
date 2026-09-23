@@ -7,10 +7,14 @@
 //  network-change service that reloads the widget. It registers itself to launch
 //  at login so the service persists silently.
 //
+//  The network-watching itself lives in the IPWidgetKit local package
+//  (NetworkMonitoring) — this file just owns and starts it.
+//
 
-import SwiftUI
 import AppKit
+import NetworkMonitoring
 import ServiceManagement
+import SwiftUI
 
 @main
 struct IPWidgetHostApp: App {
