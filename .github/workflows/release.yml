@@ -36,5 +36,7 @@ jobs:
 
       - name: Run semantic-release
         uses: mridang/action-semantic-release@v2
+        env:
+          DEBUG: 'semantic-release:*,octokit:*'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
