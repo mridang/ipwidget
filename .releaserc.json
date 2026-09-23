@@ -1,6 +1,6 @@
 {
   "branches": [
-    "main"
+    "master"
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
@@ -8,7 +8,13 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "bash installer/build.sh ${nextRelease.version}"
+        "prepareCmd": "perl -pi -e \"s/MARKETING_VERSION = [^;]*;/MARKETING_VERSION = ${nextRelease.version};/g\" IPWidget.xcodeproj/project.pbxproj"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "make package VERSION=${nextRelease.version}"
       }
     ],
     [
@@ -26,6 +32,15 @@
             "label": "IPWidget.app (macOS, drag-install)"
           }
         ]
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "IPWidget.xcodeproj/project.pbxproj"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
   ]
