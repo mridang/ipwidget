@@ -18,7 +18,7 @@ jobs:
     runs-on: macos-15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Apply swift-format
         run: swift format --recursive --in-place IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests
