@@ -3,7 +3,7 @@ name: Format Code (swift-format)
 on: push
 
 permissions:
-  contents: write
+  contents: read
 
 defaults:
   run:
@@ -20,15 +20,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Apply swift-format
-        run: swift format --recursive --in-place IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests
-
-      - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          commit_message: Apply swift-format
-          commit_options: '--no-verify'
-          repository: .
-          commit_user_name: github-actions[bot]
-          commit_user_email: github-actions[bot]@users.noreply.github.com
-          commit_author: GitHub Actions <actions@github.com>
+      - name: Check swift-format
+        run: swift format lint --strict --recursive IPWidgetApp IPWidgetExtension Packages/IPWidgetKit/Sources Packages/IPWidgetKit/Tests
